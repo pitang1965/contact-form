@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>お問い合わせフォーム</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+  <body>
+    <div class="container">
+      <form id="contact" action="" method="post">
+        <h3>お問い合わせフォーム</h3>
+        <h4>ご意見・ご要望をお寄せください。</h4>
+        <fieldset>
+          <input
+            placeholder="お名前"
+            type="text"
+            name="name"
+            tabindex="1"
+            required
+            autofocus
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            placeholder="メールアドレス"
+            type="email"
+            name="email"
+            tabindex="2"
+            required
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            placeholder="電話番号（任意）"
+            type="tel"
+            name="tel"
+            tabindex="3"
+          />
+        </fieldset>
+        <fieldset>
+          <input
+            placeholder="会社名（任意）"
+            type="text"
+            name="company"
+            tabindex="4"
+          />
+        </fieldset>
+        <fieldset>
+          <textarea
+            placeholder="メッセージをこちらにどうぞ...."
+            type="text"
+            name="message"
+            tabindex="5"
+            required
+          ></textarea>
+        </fieldset>
+        <fieldset>
+          <button
+            name="submit"
+            type="submit"
+            id="contact-submit"
+            data-submit="...Sending"
+          >
+            送信
+          </button>
+        </fieldset>
+        <p class="copyright">
+          Powered by
+          <a
+            href="https://over40web.club"
+            target="_blank"
+            title="Over 40 Web Club"
+            >Over 40 Web Club</a
+          >
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
