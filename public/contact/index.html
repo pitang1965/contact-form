@@ -5,11 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>お問い合わせフォーム</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   </head>
-  <script src="https://unpkg.com/htmx.org@1.9.10"></script>
   <body>
     <div class="container">
-      <form id="contact" action="" method="post">
+      <form
+        id="contact"
+        hx-post="/submit"
+        hx-target="#submit-button"
+        hx-swap="outerHTML"
+      >
         <h3>お問い合わせフォーム</h3>
         <h4>ご意見・ご要望をお寄せください。</h4>
         <fieldset>
@@ -60,8 +65,7 @@
           <button
             name="submit"
             type="submit"
-            id="contact-submit"
-            data-submit="...Sending"
+            id="submit-button"
           >
             送信
           </button>

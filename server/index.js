@@ -12,9 +12,12 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.post('/submit', (req, res) => {
+  console.log('/submit')
   // 送信されたフォームデータ
   const name = req.body.name;
   const email = req.body.email;
+  const tel = req.body.tel;
+  const company = req.body.company;
   const message = req.body.message;
 
   // コンソールログに出力
@@ -24,8 +27,7 @@ app.post('/submit', (req, res) => {
   console.log(`Company: ${company}`);
   console.log(`Message: ${message}`);
 
-  // 送信完了ページへリダイレクト
-  res.redirect('/success');
+  res.send('<button disabled id="thanks">送信されました。お問い合わせありがとうございます。</button>')
 });
 
 app.listen(port, () => {

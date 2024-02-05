@@ -8,7 +8,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-font-smoothing: antialiased;
   -o-font-smoothing: antialiased;
-  font-smoothing: antialiased;
+  font-smooth: antialiased;
   text-rendering: optimizeLegibility;
 }
 
@@ -19,6 +19,12 @@ body {
   line-height: 30px;
   color: #777;
   background: #ee60cf;
+}
+
+#thanks {
+  background-color: #F9F9F9;
+  color: black;
+  border: none;
 }
 
 .container {
