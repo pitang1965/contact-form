@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const path = require('path');
+const { processInquiry } = require('./inquiryProcessor');
+
 const port = 3000;
 
 const app = express();
@@ -12,7 +13,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.post('/submit', (req, res) => {
-  console.log('/submit')
   // 送信されたフォームデータ
   const name = req.body.name;
   const email = req.body.email;
@@ -20,14 +20,12 @@ app.post('/submit', (req, res) => {
   const company = req.body.company;
   const message = req.body.message;
 
-  // コンソールログに出力
-  console.log(`Name: ${name}`);
-  console.log(`Email: ${email}`);
-  console.log(`Tel: ${tel}`);
-  console.log(`Company: ${company}`);
-  console.log(`Message: ${message}`);
+  // 問い合わせ内容を処理
+  processInquiry(name, email, tel, company, message);
 
-  res.send('<button disabled id="thanks">送信されました。お問い合わせありがとうございます。</button>')
+  res.send(
+    '<button disabled id="thanks">送信されました。お問い合わせありがとうございます。</button>'
+  );
 });
 
 app.listen(port, () => {
