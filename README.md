@@ -1,7 +1,11 @@
 # contact-form
 
-* htmxを用いたコンタクトフォームの実験
+* [htmx](https://htmx.org/)を用いたコンタクトフォームの実験
 * 問い合わせ内容をGoogleスプレッドシートに記録します。
+* [Google Sheets API](https://developers.google.com/sheets/api/guides/concepts?hl=ja)を使用。
+* APIは[Express](https://expressjs.com/ja/)で実装。
+* [Vercel](https://vercel.com/)にサーバーレスファンクションを用いてデプロイ。
+  * [Using Express.js with Vercel](https://vercel.com/guides/using-express-with-vercel)
 
 ## 必要な作業
 1. `server\inquiryProcessor.js`の`SPREADSHEET_ID`にGoogleスプレッドシートのIDを設定する。これは、`https://docs.google.com/spreadsheets/d/スプレッドシートID/edit`の`スプレッドシート`の部分です。
