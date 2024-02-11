@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // 静的ファイル配信
 app.use(express.static('public'));
 
-app.post('/submit', (req, res) => {
+app.post('/submit', async (req, res) => {
   // 送信されたフォームデータ
   const name = req.body.name;
   const email = req.body.email;
@@ -20,12 +20,25 @@ app.post('/submit', (req, res) => {
   const company = req.body.company;
   const message = req.body.message;
 
-  // 問い合わせ内容を処理
-  processInquiry(name, email, tel, company, message);
+  try {
+    // 問い合わせ内容を処理
+    const ret = await processInquiry(name, email, tel, company, message);
 
-  res.send(
-    '<button disabled id="thanks">送信されました。お問い合わせありがとうございます。</button>'
-  );
+    if (ret.status == 200) {
+      res.send(
+        `<button disabled id="api-success">送信されました。${name}さん、お問い合わせありがとうございます。</button>`
+      );
+    } else {
+      res.send(
+        `<button disabled id="api-error">エラーのため送信できませんでした。申し訳ございません。${ret.message}</button>`
+      );
+    }
+  } catch (error) {
+    console.error('Error processing inquiry:', error);
+    res.send(
+      `<button disabled id="api-error">エラーのため送信できませんでした。申し訳ございません。${error}</button>`
+    );
+  }
 });
 
 app.listen(port, () => {
