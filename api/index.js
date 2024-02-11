@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // 静的ファイル配信
 app.use(express.static('public'));
 
-app.post('/submit', async (req, res) => {
+app.post('/api/submit', async (req, res) => {
   // 送信されたフォームデータ
   const name = req.body.name;
   const email = req.body.email;
