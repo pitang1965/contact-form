@@ -2,8 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const { processInquiry } = require('./inquiryProcessor');
 
-const port = 3000;
-
+const port = process.env.PORT || 3000;;
 const app = express();
 
 // フォームデータの解析
