@@ -12,16 +12,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static('public'));
 
 app.post('/api/submit', async (req, res) => {
-  // 送信されたフォームデータ
-  const name = req.body.name;
-  const email = req.body.email;
-  const tel = req.body.tel;
-  const company = req.body.company;
-  const message = req.body.message;
+  // 送信されたフォームデータを取得
+  const { name, email, tel, company, message } = req.body;
+  // 呼び出し元URLをheadersから取得
+  const referer = req.headers['referer'];
 
   try {
     // 問い合わせ内容を処理
-    const ret = await processInquiry(name, email, tel, company, message);
+    const ret = await processInquiry(name, email, tel, company, message, referer);
 
     if (ret.status == 200) {
       res.send(
