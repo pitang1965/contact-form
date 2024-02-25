@@ -16,10 +16,12 @@ app.post('/api/submit', async (req, res) => {
   const { name, email, tel, company, message } = req.body;
   // 呼び出し元URLをheadersから取得
   const referer = req.headers['referer'];
+  // クライアントのIPアドレスを取得
+  const clientIp = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
   try {
     // 問い合わせ内容を処理
-    const ret = await processInquiry(name, email, tel, company, message, referer);
+    const ret = await processInquiry(name, email, tel, company, message, referer, clientIp);
 
     if (ret.status == 200) {
       res.send(

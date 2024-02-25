@@ -14,28 +14,29 @@ const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
 const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
 // Google スプレッドシートのすべてのスプレッドシートの表示、編集、作成、削除を行えます。
 
-async function processInquiry(name, email, tel, company, message, referer) {
+async function processInquiry(name, email, tel, company, message, referer, clientIp) {
   log(name, email, tel, company, message, referer);
-  const ret = await appendSpreadsheetRow(name, email, tel, company, message, referer);
+  const ret = await appendSpreadsheetRow(name, email, tel, company, message, referer, clientIp);
 
   return ret;
 }
 
 // コンソールログに出力
-function log(name, email, tel, company, message, referer) {
+function log(name, email, tel, company, message, referer, clientIp) {
   console.log(`Name: ${name}`);
   console.log(`Email: ${email}`);
   console.log(`Tel: ${tel}`);
   console.log(`Company: ${company}`);
   console.log(`Message: ${message}`);
   console.log(`Referer: ${referer}`);
+  console.log(`Client IP: ${clientIp}`);
 }
 
 // Googleスプレッドシートの行を追加
 // spreadsheets.values.append メソッドのリファレンス：
 //   https://developers.google.com/sheets/api/reference/rest/v4/spreadsheets.values/append?hl=ja
 
-async function appendSpreadsheetRow(name, email, tel, company, message, referer) {
+async function appendSpreadsheetRow(name, email, tel, company, message, referer, clientIp) {
   const auth = new google.auth.GoogleAuth({
     credentials: SERVICE_ACCOUNT,
     scopes: SCOPES,
@@ -46,7 +47,7 @@ async function appendSpreadsheetRow(name, email, tel, company, message, referer)
   const range = 'シート1!A:F'; // AからE列にデータを追加
   const valueInputOption = 'USER_ENTERED'; // ユーザーが入力するかのようにデータを解釈
   const values = [
-    [name, email, tel, company, message, referer], // 追加する行のデータ
+    [name, email, tel, company, message, referer, clientIp], // 追加する行のデータ
   ];
 
   const request = {
