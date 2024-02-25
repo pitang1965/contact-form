@@ -7,7 +7,7 @@
 * [Vercel](https://vercel.com/)にサーバーレスファンクションを用いてデプロイ。
   * [Using Express.js with Vercel](https://vercel.com/guides/using-express-with-vercel)
 
-![image](https://github.com/pitang1965/contact-form/assets/47315420/a32c3063-a8e3-4433-9d5f-cce4b4b0e34e)
+![animation](https://github.com/pitang1965/contact-form/assets/47315420/c7fa87be-a989-40ca-b2ba-0cea654cc4fc)
 
 ## 必要な作業
 1. `server\inquiryProcessor.js`の`SPREADSHEET_ID`にGoogleスプレッドシートのIDを設定する。これは、`https://docs.google.com/spreadsheets/d/スプレッドシートID/edit`の`スプレッドシート`の部分です。
