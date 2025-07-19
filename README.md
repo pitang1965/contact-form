@@ -30,3 +30,22 @@ GOOGLE_SERVICE_ACCOUNT_CREDENTIALS='
 }'
 SPREADSHEET_ID = 'xxxxx';
 ```
+
+## 開発環境での実行方法
+
+1. **依存関係をインストール**
+   ```bash
+   npm install
+   ```
+
+2. **開発サーバーを起動**
+   ```bash
+   npm start
+   ```
+
+3. **ブラウザでアクセス**
+   
+   サーバーが起動したら、以下のURLでアプリケーションにアクセスできます：
+   ```
+   http://localhost:3000
+   ```
